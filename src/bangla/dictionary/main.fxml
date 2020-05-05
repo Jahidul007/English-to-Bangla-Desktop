@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="326.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bangla.dictionary.FXMLController">
   <children>
-      <SplitPane dividerPositions="0.35" prefHeight="346.0" prefWidth="640.0">
+      
+      <SplitPane dividerPositions="0.35" prefHeight="307.0" prefWidth="640.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="221.0">
                <children>
-                  <ListView fx:id="wordlist" layoutX="15.0" layoutY="33.0" prefHeight="309.0" prefWidth="165.0" />
-                  <TextField fx:id="text" layoutX="22.0" layoutY="7.0" />
+                  <TextField fx:id="searchField" layoutX="22.0" layoutY="7.0" />
+                  <TableView fx:id="table" layoutX="10.0" layoutY="39.0" onKeyReleased="#selectedItems" onMouseClicked="#selectedItems" prefHeight="226.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="wordlist" editable="false" prefWidth="196.0" text="Search" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ScrollPane fx:id="details" layoutX="3.0" layoutY="31.0" prefHeight="309.0" prefWidth="400.0" />
-                  <Text layoutX="179.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WORD" textAlignment="CENTER" underline="true" />
+                  <Text layoutX="162.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WORD" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="details" layoutX="9.0" layoutY="49.0" prefHeight="204.0" prefWidth="399.0" />
                </children>
             </AnchorPane>
         </items>
