@@ -149,7 +149,7 @@ public class FXMLController implements Initializable {
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (eng.getWord().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+				if (eng.getWord().toLowerCase().contains(lowerCaseFilter) ) {
 					return true; // Filter matches first name.
 				} 
                                 else{
@@ -159,7 +159,7 @@ public class FXMLController implements Initializable {
 		});
 		
 		// 3. Wrap the FilteredList in a SortedList. 
-		SortedList<Eng> sortedData = new SortedList<>(filteredData);
+		SortedList<Eng> sortedData = new SortedList<>(data);
 		
 		// 4. Bind the SortedList comparator to the TableView comparator.
 		// 	  Otherwise, sorting the TableView would have no effect.
