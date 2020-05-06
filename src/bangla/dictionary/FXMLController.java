@@ -43,11 +43,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class FXMLController implements Initializable {
 
     Connection conn = ConnectionDb.java_db();
 
+    @FXML
+    private Text mainWord;
     @FXML
     TableView<Eng> table;
 
@@ -320,15 +323,22 @@ public class FXMLController implements Initializable {
         PreparedStatement pst = conn.prepareStatement(query);
 
         ResultSet rs = pst.executeQuery();
+        
+        String query1 = "select * from eng where serial =" + id;
+        PreparedStatement pst1 = conn.prepareStatement(query1);
+
+        ResultSet rs1 = pst1.executeQuery();
+        String word1 = rs1.getString("word");
+        
+        mainWord.setText(word1);
+        
         while (rs.next()) {
             String word = rs.getString("word");
             String def = rs.getString("def");
             String exm = rs.getString("exm");
-            System.out.println(def);
             details.setText(word);
             details.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
             details.setMaxWidth(313);
-            details.setWrapText(true);
             
             
             detailsDef.setText(def);

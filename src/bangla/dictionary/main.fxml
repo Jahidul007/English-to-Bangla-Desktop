@@ -27,20 +27,20 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Text layoutX="123.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="বঙ্গানুবাদ" textAlignment="CENTER">
+                  <Text fx:id="mainWord" layoutX="123.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="বঙ্গানুবাদ" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextArea fx:id="details" layoutX="9.0" layoutY="49.0" prefHeight="37.0" prefWidth="313.0" />
-                  <TextArea fx:id="detailsDef" layoutX="9.0" layoutY="110.0" prefHeight="51.0" prefWidth="313.0" />
-                  <TextArea fx:id="detailsExam" layoutX="8.0" layoutY="191.0" prefHeight="51.0" prefWidth="313.0" />
-                  <Text layoutX="9.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="সংজ্ঞা" textAlignment="CENTER">
+                  <TextArea fx:id="details" editable="false" layoutX="9.0" layoutY="39.0" prefHeight="37.0" prefWidth="313.0" text="&#10;" />
+                  <TextArea fx:id="detailsDef" editable="false" layoutX="9.0" layoutY="117.0" prefHeight="58.0" prefWidth="313.0" wrapText="true" />
+                  <TextArea fx:id="detailsExam" editable="false" layoutX="9.0" layoutY="213.0" prefHeight="51.0" prefWidth="313.0" />
+                  <Text layoutX="8.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="সংজ্ঞা" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="9.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="উদাহরণ" textAlignment="CENTER">
+                  <Text layoutX="9.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="উদাহরণ" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
