@@ -62,6 +62,9 @@ public class FXMLController implements Initializable {
     
     @FXML
     private TextArea detailsExam;
+    
+    @FXML
+    private TextArea detailsDef;
 
     @FXML
     private Button button;
@@ -328,8 +331,13 @@ public class FXMLController implements Initializable {
             details.setWrapText(true);
             
             
-            detailsExam.setText(def + "\n" + exm);
-            detailsExam.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+            detailsDef.setText(def);
+            detailsDef.setFont(Font.font("Verdana", 16));
+            detailsDef.setMaxWidth(313);
+            detailsDef.setWrapText(true);
+            
+            detailsExam.setText(exm);
+            detailsExam.setFont(Font.font("Verdana", 16));
             detailsExam.setMaxWidth(313);
             detailsExam.setWrapText(true);
 
