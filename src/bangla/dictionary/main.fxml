@@ -17,8 +17,8 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="221.0">
                <children>
-                  <TextField fx:id="searchField" layoutX="22.0" layoutY="7.0" />
-                  <TableView fx:id="table" layoutX="10.0" layoutY="39.0" onKeyPressed="#selectedItems2" onMouseClicked="#selectedItems" prefHeight="226.0" prefWidth="200.0">
+                  <TextField fx:id="searchField" layoutX="22.0" layoutY="7.0" onKeyReleased="#keypress" />
+                  <TableView fx:id="table" layoutX="10.0" layoutY="39.0" onKeyReleased="#selectedItems2" onMouseClicked="#selectedItems" prefHeight="244.0" prefWidth="200.0">
                     <columns>
                       <TableColumn fx:id="wordlist" editable="false" prefWidth="196.0" text="Search" />
                     </columns>
@@ -27,12 +27,24 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Text layoutX="162.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WORD" textAlignment="CENTER">
+                  <Text layoutX="123.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="বঙ্গানুবাদ" textAlignment="CENTER">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextArea fx:id="details" layoutX="9.0" layoutY="49.0" prefHeight="204.0" prefWidth="399.0" />
+                  <TextArea fx:id="details" layoutX="9.0" layoutY="49.0" prefHeight="37.0" prefWidth="313.0" />
+                  <TextArea fx:id="detailsDef" layoutX="9.0" layoutY="110.0" prefHeight="51.0" prefWidth="313.0" />
+                  <TextArea fx:id="detailsExam" layoutX="8.0" layoutY="191.0" prefHeight="51.0" prefWidth="313.0" />
+                  <Text layoutX="9.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="সংজ্ঞা" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="9.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="উদাহরণ" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
         </items>
