@@ -18,7 +18,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="221.0">
                <children>
                   <TextField fx:id="searchField" layoutX="22.0" layoutY="7.0" />
-                  <TableView fx:id="table" layoutX="10.0" layoutY="39.0" onKeyReleased="#selectedItems" onMouseClicked="#selectedItems" prefHeight="226.0" prefWidth="200.0">
+                  <TableView fx:id="table" layoutX="10.0" layoutY="39.0" onKeyPressed="#selectedItems2" onMouseClicked="#selectedItems" prefHeight="226.0" prefWidth="200.0">
                     <columns>
                       <TableColumn fx:id="wordlist" editable="false" prefWidth="196.0" text="Search" />
                     </columns>
