@@ -90,6 +90,7 @@ public class FXMLController implements Initializable {
     @FXML
     void selectedItems(MouseEvent event) throws SQLException {
         Eng eng = table.getSelectionModel().getSelectedItem();
+        System.out.println("it's work");
         if (eng == null) {
             details.setText("Nothing");
         } else {
@@ -98,17 +99,22 @@ public class FXMLController implements Initializable {
             findWord(id);
         }
     }
-//    @FXML
-//    void speechEvent(MouseEvent event) throws IOException, JavaLayerException{
-//        // add speech
-//        Eng eng = new Eng();
-//        String speech = eng.getWord();
-//        System.out.println("speech"+ speech);
-//        InputStream sound = null;
-//        Audio audio = Audio.getInstance();
-//        sound = audio.getAudio(speech, Language.ENGLISH);
-//        audio.play(sound);
-//    }
+    @FXML
+    void speechEvent(MouseEvent event) {
+        // add speech
+        Eng eng = new Eng();
+        InputStream sound = null;
+        Audio audio = Audio.getInstance();
+        try {
+            sound = audio.getAudio("speech", Language.ENGLISH);
+            audio.play(sound);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JavaLayerException ex) {
+            Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     @FXML
     void selectedItems2(KeyEvent event) throws SQLException {
@@ -349,22 +355,22 @@ public class FXMLController implements Initializable {
 
         mainWord.setText(word1);
         
-        mainWord.setOnMouseClicked(evt -> {
-            if (evt.getButton() == MouseButton.PRIMARY && evt.getClickCount() == 2) {
-                InputStream sound = null;
-                Audio audio = Audio.getInstance();
-                System.out.println("okkkkkkkkk");
-                try {
-                    sound = audio.getAudio("Hello World", Language.ENGLISH);
-                    audio.play(sound);
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (JavaLayerException ex) {
-                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-            }
-        });
+//        mainWord.setOnMouseClicked(evt -> {
+//            if (evt.getButton() == MouseButton.PRIMARY && evt.getClickCount() == 2) {
+//                InputStream sound = null;
+//                Audio audio = Audio.getInstance();
+//                System.out.println("okkkkkkkkk");
+//                try {
+//                    sound = audio.getAudio("Hello World", Language.ENGLISH);
+//                    audio.play(sound);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (JavaLayerException ex) {
+//                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                
+//            }
+//        });
 
         while (rs.next()) {
             String word = rs.getString("word");
