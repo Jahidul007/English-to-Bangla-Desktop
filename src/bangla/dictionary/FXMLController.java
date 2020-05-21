@@ -5,6 +5,9 @@ import java.awt.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import java.io.IOException;
+import java.io.InputStream;
+import com.gtranslate.Audio;
+import com.gtranslate.Language;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,12 +41,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javazoom.jl.decoder.JavaLayerException;
 
 public class FXMLController implements Initializable {
 
@@ -62,10 +68,10 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextArea details;
-    
+
     @FXML
     private TextArea detailsExam;
-    
+
     @FXML
     private TextArea detailsDef;
 
@@ -92,6 +98,17 @@ public class FXMLController implements Initializable {
             findWord(id);
         }
     }
+//    @FXML
+//    void speechEvent(MouseEvent event) throws IOException, JavaLayerException{
+//        // add speech
+//        Eng eng = new Eng();
+//        String speech = eng.getWord();
+//        System.out.println("speech"+ speech);
+//        InputStream sound = null;
+//        Audio audio = Audio.getInstance();
+//        sound = audio.getAudio(speech, Language.ENGLISH);
+//        audio.play(sound);
+//    }
 
     @FXML
     void selectedItems2(KeyEvent event) throws SQLException {
@@ -323,15 +340,32 @@ public class FXMLController implements Initializable {
         PreparedStatement pst = conn.prepareStatement(query);
 
         ResultSet rs = pst.executeQuery();
-        
+
         String query1 = "select * from eng where serial =" + id;
         PreparedStatement pst1 = conn.prepareStatement(query1);
 
         ResultSet rs1 = pst1.executeQuery();
         String word1 = rs1.getString("word");
-        
+
         mainWord.setText(word1);
         
+        mainWord.setOnMouseClicked(evt -> {
+            if (evt.getButton() == MouseButton.PRIMARY && evt.getClickCount() == 2) {
+                InputStream sound = null;
+                Audio audio = Audio.getInstance();
+                System.out.println("okkkkkkkkk");
+                try {
+                    sound = audio.getAudio("Hello World", Language.ENGLISH);
+                    audio.play(sound);
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (JavaLayerException ex) {
+                    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+
         while (rs.next()) {
             String word = rs.getString("word");
             String def = rs.getString("def");
@@ -339,13 +373,12 @@ public class FXMLController implements Initializable {
             details.setText(word);
             details.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
             details.setMaxWidth(313);
-            
-            
+
             detailsDef.setText(def);
             detailsDef.setFont(Font.font("Verdana", 16));
             detailsDef.setMaxWidth(313);
             detailsDef.setWrapText(true);
-            
+
             detailsExam.setText(exm);
             detailsExam.setFont(Font.font("Verdana", 16));
             detailsExam.setMaxWidth(313);
