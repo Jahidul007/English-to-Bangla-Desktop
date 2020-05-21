@@ -99,22 +99,7 @@ public class FXMLController implements Initializable {
             findWord(id);
         }
     }
-    @FXML
-    void speechEvent(MouseEvent event) {
-        // add speech
-        Eng eng = new Eng();
-        InputStream sound = null;
-        Audio audio = Audio.getInstance();
-        try {
-            sound = audio.getAudio("speech", Language.ENGLISH);
-            audio.play(sound);
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JavaLayerException ex) {
-            Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+    
 
     @FXML
     void selectedItems2(KeyEvent event) throws SQLException {
